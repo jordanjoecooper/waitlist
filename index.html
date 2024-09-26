@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Ginger & White Waitlist</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
     <!-- PIN screen commented out
     <div id="pinOverlay" class="pin-overlay">
         <div class="pin-container">
@@ -33,42 +41,42 @@
     -->
 
     <div class="container">
-        <div class="logo-container">
-            <img src="logo.png" alt="Ginger & White Logo" class="logo">
+      <div class="logo-container">
+        <img src="logo.png" alt="Ginger & White Logo" class="logo" />
+      </div>
+      <div class="content">
+        <h1>Waitlist</h1>
+        <div class="button-container">
+          <button id="addButton">Add to Waitlist</button>
+          <button id="clearAllButton">Clear All</button>
         </div>
-        <div class="content">
-            <h1>Waitlist</h1>
-            <div class="button-container">
-                <button id="addButton">Add to Waitlist</button>
-                <button id="clearAllButton">Clear All</button>
-            </div>
-            <div id="formContainer" class="hidden">
-                <input type="text" id="nameInput" placeholder="Enter name">
-                <select id="guestsInput">
-                    <option value="" disabled selected>Number of guests</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                </select>
-                <button id="confirmButton">Confirm</button>
-            </div>
-            <ul id="waitlist"></ul>
+        <div id="formContainer" class="hidden">
+          <input type="text" id="nameInput" placeholder="Enter name" />
+          <select id="guestsInput">
+            <option value="" disabled selected>Number of guests</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+          <button id="confirmButton">Confirm</button>
         </div>
+        <ul id="waitlist"></ul>
+      </div>
     </div>
     <div id="modal" class="modal hidden">
-        <div class="modal-content">
-            <p>Are you sure you want to clear all entries?</p>
-            <div class="modal-buttons">
-                <button id="confirmClear">Yes, Clear All</button>
-                <button id="cancelClear">Cancel</button>
-            </div>
+      <div class="modal-content">
+        <p>Are you sure you want to clear all entries?</p>
+        <div class="modal-buttons">
+          <button id="confirmClear">Yes, Clear All</button>
+          <button id="cancelClear">Cancel</button>
         </div>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
