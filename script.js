@@ -139,15 +139,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const showError = (element, message) => {
             element.classList.add('error');
-            const errorSpan = document.createElement('span');
-            errorSpan.className = 'error-message';
+            let errorSpan = element.nextElementSibling;
+            if (!errorSpan || !errorSpan.classList.contains('error-message')) {
+                errorSpan = document.createElement('span');
+                errorSpan.className = 'error-message';
+                element.parentNode.insertBefore(errorSpan, element.nextSibling);
+            }
             errorSpan.textContent = message;
-            element.parentNode.insertBefore(errorSpan, element.nextSibling);
+            errorSpan.classList.add('visible');
         };
 
         const clearErrors = () => {
             document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-            document.querySelectorAll('.error-message').forEach(el => el.remove());
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.classList.remove('visible');
+            });
         };
 
         confirmButton.addEventListener('click', () => {

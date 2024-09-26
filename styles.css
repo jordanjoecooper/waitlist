@@ -123,9 +123,9 @@ button:hover, .key:hover {
 input[type="text"], select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px; /* Adjusted margin */
     border: 1px solid #212121;
-    border-radius: 0;
+    border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
@@ -182,23 +182,32 @@ select {
 }
 
 .error {
-    border-color: #cc0000 !important;
+    border-color: #ff3b30 !important;
 }
 
 .error-message {
-    color: #ff3b30;
-    font-size: 16px;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #ffeeee;
-    border-radius: 8px;
+    color: #000000;
+    font-size: 14px;
+    margin-top: 5px;
     display: none;
-    transition: opacity 0.3s ease;
+    background-color: #ffeeee;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 10px;
 }
 
 .error-message.visible {
     display: block;
-    opacity: 1;
+}
+
+/* Add some space after the guests input */
+#guestsInput {
+    margin-bottom: 5px;
+}
+
+/* Adjust the confirm button positioning */
+#confirmButton {
+    margin-top: 10px;
 }
 
 .button-container {
@@ -371,21 +380,33 @@ select {
 }
 
 .error-message {
-    color: #ff3b30;
-    font-size: 16px;
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #ffeeee;
-    border-radius: 8px;
+    color: #000000;
+    font-size: 14px;
+    margin-top: 5px;
     display: none;
-    transition: opacity 0.3s ease;
+    background-color: #ffeeee;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 10px;
 }
 
 .error-message.visible {
     display: block;
-    opacity: 1;
 }
 
 .hidden {
     display: none;
+}
+
+#formContainer {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#guestsInput {
+    margin-bottom: 5px;
+}
+
+#confirmButton {
+    margin-top: 10px;
 }
