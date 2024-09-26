@@ -1,0 +1,239 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-container {
+    background-color: #212121;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+    filter: brightness(0) invert(1);
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-weight: 600;
+    color: #212121;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.content {
+    padding: 0 20px 20px;
+}
+
+button {
+    background-color: #212121;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background-color: #333333;
+}
+
+#addButton, #clearAllButton {
+    width: 48%;
+    padding: 10px 0;
+    font-size: 14px;
+    text-align: center;
+    height: 44px;
+    line-height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#clearAllButton {
+    background-color: #cc0000;
+}
+
+#clearAllButton:hover {
+    background-color: #ff0000;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #212121;
+    border-radius: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f5f5f5;
+    border-radius: 0;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.removeButton {
+    background-color: #cc0000;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.removeButton:hover {
+    background-color: #ff0000;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000000%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%;
+    background-size: 0.65em auto;
+}
+
+.guest-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.remove-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.error {
+    border-color: #cc0000 !important;
+}
+
+.error-message {
+    color: #cc0000;
+    font-size: 14px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#addButton {
+    background-color: #212121;
+}
+
+#addButton:hover {
+    background-color: #333333;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 0;
+    text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.wait-time {
+    font-size: 14px;
+    color: #666666;
+    margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    button, #addButton, #clearAllButton {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    button, #addButton, #clearAllButton {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+}
