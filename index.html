@@ -46,12 +46,8 @@
       </div>
       <div class="content">
         <h1>Waitlist</h1>
-        <div class="button-container">
-          <button id="addButton">Add to Waitlist</button>
-          <button id="clearAllButton">Clear All</button>
-        </div>
-        <div id="formContainer" class="hidden">
-          <input type="text" id="nameInput" placeholder="Enter name" />
+        <div id="formContainer">
+          <input type="text" id="nameInput" placeholder="Name" maxlength="22" />
           <select id="guestsInput">
             <option value="" disabled selected>Number of guests</option>
             <option value="1">1</option>
@@ -63,9 +59,12 @@
             <option value="7">7</option>
             <option value="8">8</option>
           </select>
-          <button id="confirmButton">Confirm</button>
+          <button id="confirmButton">Add to list</button>
         </div>
         <ul id="waitlist"></ul>
+        <div class="button-container">
+            <button id="clearAllButton">Clear all</button>
+          </div>
       </div>
     </div>
     <div id="modal" class="modal hidden">

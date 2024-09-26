@@ -6,7 +6,7 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Changed from center to flex-start */
     min-height: 100vh;
 }
 
@@ -16,8 +16,7 @@ body {
     padding: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
-    max-height: 80vh;
+    max-width: 800px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -32,7 +31,7 @@ body {
 }
 
 .logo {
-    width: 200px;
+    width: 300px; /* Increased from 200px */
     filter: brightness(0) invert(1);
 }
 
@@ -46,7 +45,11 @@ h1 {
 }
 
 .content {
-    padding: 0 20px 20px;
+    padding: 0 20px 40px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto; /* Center the content within the wider container */
+    width: 100%; /* Added to ensure full width */
 }
 
 button, .key {
@@ -54,7 +57,7 @@ button, .key {
     color: #ffffff;
     border: none;
     padding: 10px 20px;
-    border-radius: 50px; /* This creates the rounded shape */
+    border-radius: 50px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -91,9 +94,10 @@ button, .key {
 
 /* Specific styles for add and clear all buttons */
 #addButton, #clearAllButton {
-    width: 48%;
+    width: 100%;
+    max-width: 205px; /* Increased from 400px to 405px */
     padding: 10px 0;
-    font-size: 14px;
+    font-size: 16px; /* Increased font size */
     text-align: center;
     height: 44px;
     line-height: 24px;
@@ -120,38 +124,50 @@ button:hover, .key:hover {
     opacity: 0.9;
 }
 
-input[type="text"], select {
+input[type="text"], select, #confirmButton {
     width: 100%;
+    box-sizing: border-box;
     padding: 10px;
     margin-bottom: 5px; /* Adjusted margin */
     border: 1px solid #212121;
     border-radius: 5px;
     font-size: 16px;
-    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
+    max-width: 405px; /* Increased from 400px to 405px */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 ul {
-    list-style-type: none;
+    width: 100%;
+    max-width: 100%; /* Changed from 810px to 100% */
+    margin: 0 auto;
     padding: 0;
+    list-style-type: none;
 }
 
 li {
+    width: 100%;
+    box-sizing: border-box;
     background-color: #f5f5f5;
     border-radius: 0;
     padding: 15px;
     margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
     align-items: center;
-    flex-direction: column;
-    align-items: flex-start;
+    gap: 10px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .removeButton {
     background-color: #cc0000;
     padding: 5px 10px;
     font-size: 14px;
+    white-space: nowrap; /* Prevent button text from wrapping */
 }
 
 .removeButton:hover {
@@ -169,16 +185,16 @@ select {
 }
 
 .guest-info {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
+    display: contents; /* This allows the child elements to participate in the grid layout */
+}
+
+.guest-name, .guest-count {
+    margin-right: 20px;
 }
 
 .remove-button-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+    width: auto; /* Allow it to take only the space it needs */
+    padding-top: 0; /* Remove top padding */
 }
 
 .error {
@@ -200,16 +216,12 @@ select {
     display: block;
 }
 
-/* Add some space after the guests input */
-#guestsInput {
-    margin-bottom: 15px; /* Increase this value for more space */
-}
-
 /* Adjust the confirm button positioning */
 #confirmButton {
     margin-top: 10px; /* Reduced from 20px to 10px */
     width: 100%; /* Makes the button take up full width */
     box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+    padding: 2.5px;
 }
 
 /* Ensure consistent styling with other buttons */
@@ -232,8 +244,14 @@ select {
 
 .button-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Add space between buttons */
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 405px; /* Increased from 400px to 405px */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #addButton {
@@ -251,9 +269,17 @@ select {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
+    display: none; /* Change from flex to none */
     justify-content: center;
     align-items: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal:not(.hidden) {
+    display: flex;
 }
 
 .modal-content {
@@ -261,6 +287,8 @@ select {
     padding: 20px;
     border-radius: 0;
     text-align: center;
+    max-width: 400px; /* Limit width of modal content */
+    margin: 0 auto;
 }
 
 .modal-buttons {
@@ -269,14 +297,40 @@ select {
     margin-top: 20px;
 }
 
-.hidden {
-    display: none;
+#confirmClear, #cancelClear {
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+}
+
+#confirmClear {
+    background-color: #212121;
+    color: #ffffff;
+}
+
+#cancelClear {
+    background-color: #cc0000;
+    color: #ffffff;
+}
+
+#confirmClear:hover {
+    background-color: #333333;
+}
+
+#cancelClear:hover {
+    background-color: #ff0000;
 }
 
 .wait-time {
     font-size: 14px;
     color: #666666;
-    margin-top: 5px;
+    margin: 0; /* Remove top margin */
+    width: auto; /* Allow it to take only the space it needs */
 }
 
 @media (max-width: 768px) {
@@ -319,160 +373,34 @@ select {
     background-color: #cccccc;
 }
 
-/* Add these styles at the end of your existing CSS file */
-
-.pin-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.pin-container {
-    background-color: #f5f5f7;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 320px;
-    width: 100%;
-}
-
-.pin-container h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #1d1d1f;
-}
-
-.pin-display {
-    font-size: 36px;
-    margin-bottom: 30px;
-    letter-spacing: 10px;
-    color: #1d1d1f;
-}
-
-.keypad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin: 0 auto;
-}
-
-.key {
-    background-color: #ffffff;
-    color: #1d1d1f;
-    border: none;
-    border-radius: 9999px;
-    width: 70px;
-    height: 70px;
-    font-size: 24px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.key:hover {
-    background-color: #f2f2f2;
-}
-
-.key:active {
-    background-color: #e6e6e6;
-    transform: scale(0.95);
-}
-
-.key[data-key="clear"] {
-    font-size: 16px;
-    background-color: #ff3b30;
-    color: #ffffff;
-}
-
-.key[data-key="enter"] {
-    font-size: 16px;
-    background-color: #34c759;
-    color: #ffffff;
-}
-
-.key[data-key="clear"]:hover,
-.key[data-key="enter"]:hover {
-    opacity: 0.9;
-}
-
-.error-message {
-    color: #000000;
-    font-size: 14px;
-    margin-top: 5px;
-    display: none;
-    background-color: #ffeeee;
-    border-radius: 4px;
-    padding: 5px;
-    margin-bottom: 10px;
-}
-
-.error-message.visible {
-    display: block;
-}
-
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 #formContainer {
-    position: relative;
+    width: 100%;
+    max-width: 405px; /* Increased from 400px to 405px */
+    margin: 0 auto 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-#guestsInput {
-    margin-bottom: 15px; /* Keep consistent with nameInput */
+#formContainer:not(.hidden) {
+    display: flex;
 }
 
-#confirmButton {
-    margin-top: 10px; /* Reduced from 20px to 10px */
-    width: 100%; /* Makes the button take up full width */
-    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
-}
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    li {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 5px;
+    }
 
-/* Update or add this style */
-#nameInput {
-    margin-bottom: 15px; /* Increase this value for more space */
-}
-
-#confirmClear, #cancelClear {
-    padding: 10px 20px;
-    border-radius: 50px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-}
-
-#confirmClear {
-    background-color: #212121;
-    color: #ffffff;
-}
-
-#cancelClear {
-    background-color: #cc0000;
-    color: #ffffff;
-}
-
-#confirmClear:hover {
-    background-color: #333333;
-}
-
-#cancelClear:hover {
-    background-color: #ff0000;
+    .remove-button-container {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
 }

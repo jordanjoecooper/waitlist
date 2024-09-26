@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // PIN screen commented out - removed function wrapper
     // function initializeApp() {
         // Existing app code starts here
-        const addButton = document.getElementById('addButton');
         const clearAllButton = document.getElementById('clearAllButton');
         const formContainer = document.getElementById('formContainer');
         const nameInput = document.getElementById('nameInput');
@@ -100,11 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const li = document.createElement('li');
                 const waitTime = Math.floor((Date.now() - entry.timestamp) / 60000);
                 li.innerHTML = `
-                    <div class="guest-info">
-                        <span>${entry.name}</span>
-                        <span>Guests: ${entry.guests}</span>
-                    </div>
-                    <div class="wait-time">Waiting for ${waitTime} minute${waitTime !== 1 ? 's' : ''}</div>
+                    <span class="guest-name">${entry.name}</span>
+                    <span class="guest-count">Guests: ${entry.guests}</span>
+                    <span class="wait-time">Waiting: ${waitTime} min${waitTime !== 1 ? 's' : ''}</span>
                     <div class="remove-button-container">
                         <button class="removeButton" data-index="${index}">Remove</button>
                     </div>
@@ -127,19 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateWaitTimes = () => {
             document.querySelectorAll('.wait-time').forEach((el, index) => {
                 const waitTime = Math.floor((Date.now() - waitlistData[index].timestamp) / 60000);
-                el.textContent = `Waiting for ${waitTime} minute${waitTime !== 1 ? 's' : ''}`;
+                el.textContent = `Waiting ${waitTime} minute${waitTime !== 1 ? 's' : ''}`;
             });
         };
 
         setInterval(updateWaitTimes, 60000);
-
-        addButton.addEventListener('click', () => {
-            console.log('Add button clicked'); // Add this line
-            formContainer.classList.toggle('hidden');
-            if (!formContainer.classList.contains('hidden')) {
-                nameInput.focus();
-            }
-        });
 
         clearAllButton.addEventListener('click', () => {
             modal.classList.remove('hidden');
@@ -167,11 +156,12 @@ document.addEventListener('DOMContentLoaded', () => {
             errorSpan.classList.add('visible');
         };
 
-        const clearErrors = () => {
-            document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
-            document.querySelectorAll('.error-message').forEach(el => {
-                el.classList.remove('visible');
-            });
+        const clearError = (element) => {
+            element.classList.remove('error');
+            const errorSpan = element.nextElementSibling;
+            if (errorSpan && errorSpan.classList.contains('error-message')) {
+                errorSpan.classList.remove('visible');
+            }
         };
 
         confirmButton.addEventListener('click', () => {
@@ -195,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateWaitlist();
                 nameInput.value = '';
                 guestsInput.selectedIndex = 0;
-                formContainer.classList.add('hidden');
+                nameInput.focus(); // Set focus back to the name input for the next entry
             }
         });
 
@@ -208,6 +198,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         updateWaitlist();
+
+        // Add this event listener for the name input
+        nameInput.addEventListener('input', function() {
+            if (this.value.length > 22) {
+                this.value = this.value.slice(0, 0);
+                showError(this, 'Name cannot exceed 22 characters');
+            } else {
+                clearError(this);
+            }
+        });
+
+        // Modify the clearErrors function to use the new clearError function
+        const clearErrors = () => {
+            document.querySelectorAll('.error').forEach(el => clearError(el));
+        };
+
     // PIN screen commented out - removed closing brace
     // }
 });
