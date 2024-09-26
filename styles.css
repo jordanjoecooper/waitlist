@@ -202,12 +202,32 @@ select {
 
 /* Add some space after the guests input */
 #guestsInput {
-    margin-bottom: 5px;
+    margin-bottom: 15px; /* Increase this value for more space */
 }
 
 /* Adjust the confirm button positioning */
 #confirmButton {
-    margin-top: 10px;
+    margin-top: 10px; /* Reduced from 20px to 10px */
+    width: 100%; /* Makes the button take up full width */
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+}
+
+/* Ensure consistent styling with other buttons */
+#confirmButton {
+    background-color: #212121;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#confirmButton:hover {
+    background-color: #333333;
 }
 
 .button-container {
@@ -404,9 +424,16 @@ select {
 }
 
 #guestsInput {
-    margin-bottom: 5px;
+    margin-bottom: 15px; /* Keep consistent with nameInput */
 }
 
 #confirmButton {
-    margin-top: 10px;
+    margin-top: 10px; /* Reduced from 20px to 10px */
+    width: 100%; /* Makes the button take up full width */
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+}
+
+/* Update or add this style */
+#nameInput {
+    margin-bottom: 15px; /* Increase this value for more space */
 }
