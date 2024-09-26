@@ -1,77 +1,86 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const pinOverlay = document.getElementById('pinOverlay');
-    const pinDisplay = document.getElementById('pinDisplay');
-    const keypad = document.querySelector('.keypad');
-    const pinError = document.getElementById('pinError');
+    // PIN screen commented out
+    // const pinOverlay = document.getElementById('pinOverlay');
+    // const pinDisplay = document.getElementById('pinDisplay');
+    // const keypad = document.querySelector('.keypad');
+    // const pinError = document.getElementById('pinError');
 
-    const correctPin = '0134';
-    let currentPin = '';
+    // PIN screen commented out
+    // const correctPin = '0134';
+    // let currentPin = '';
 
-    function showPinOverlay() {
-        pinOverlay.classList.remove('hidden');
-    }
+    // PIN screen commented out
+    // function showPinOverlay() {
+    //     pinOverlay.classList.remove('hidden');
+    // }
 
-    function hidePinOverlay() {
-        pinOverlay.classList.add('hidden');
-    }
+    // PIN screen commented out
+    // function hidePinOverlay() {
+    //     pinOverlay.classList.add('hidden');
+    // }
 
-    function updatePinDisplay() {
-        const filledCircles = '●'.repeat(currentPin.length);
-        const emptyCircles = '○'.repeat(4 - currentPin.length);
-        pinDisplay.textContent = filledCircles + emptyCircles;
-    }
+    // PIN screen commented out
+    // function updatePinDisplay() {
+    //     const filledCircles = '●'.repeat(currentPin.length);
+    //     const emptyCircles = '○'.repeat(4 - currentPin.length);
+    //     pinDisplay.textContent = filledCircles + emptyCircles;
+    // }
 
-    function checkPin() {
-        if (currentPin === correctPin) {
-            hidePinOverlay();
-            initializeApp();
-        } else {
-            pinError.textContent = 'Incorrect PIN';
-            pinError.classList.remove('hidden');
-            pinError.classList.add('visible');
-            currentPin = '';
-            updatePinDisplay();
-            setTimeout(() => {
-                pinError.classList.remove('visible');
-                pinError.classList.add('hidden');
-            }, 2000);
-        }
-    }
+    // PIN screen commented out
+    // function checkPin() {
+    //     if (currentPin === correctPin) {
+    //         hidePinOverlay();
+    //         initializeApp();
+    //     } else {
+    //         pinError.textContent = 'Incorrect PIN';
+    //         pinError.classList.remove('hidden');
+    //         pinError.classList.add('visible');
+    //         currentPin = '';
+    //         updatePinDisplay();
+    //         setTimeout(() => {
+    //             pinError.classList.remove('visible');
+    //             pinError.classList.add('hidden');
+    //         }, 2000);
+    //     }
+    // }
 
-    keypad.addEventListener('click', (e) => {
-        if (e.target.classList.contains('key')) {
-            const key = e.target.getAttribute('data-key');
-            pinError.classList.remove('visible');
-            pinError.classList.add('hidden');
+    // PIN screen commented out
+    // keypad.addEventListener('click', (e) => {
+    //     if (e.target.classList.contains('key')) {
+    //         const key = e.target.getAttribute('data-key');
+    //         pinError.classList.remove('visible');
+    //         pinError.classList.add('hidden');
 
-            switch (key) {
-                case 'clear':
-                    currentPin = '';
-                    break;
-                case 'enter':
-                    if (currentPin.length === 4) {
-                        checkPin();
-                    }
-                    return;
-                default:
-                    if (currentPin.length < 4) {
-                        currentPin += key;
-                        if (currentPin.length === 4) {
-                            setTimeout(checkPin, 300); // Short delay for visual feedback
-                        }
-                    }
-                    break;
-            }
+    //         switch (key) {
+    //             case 'clear':
+    //                 currentPin = '';
+    //                 break;
+    //             case 'enter':
+    //                 if (currentPin.length === 4) {
+    //                     checkPin();
+    //                 }
+    //                 return;
+    //             default:
+    //                 if (currentPin.length < 4) {
+    //                     currentPin += key;
+    //                     if (currentPin.length === 4) {
+    //                         setTimeout(checkPin, 300); // Short delay for visual feedback
+    //                     }
+    //                 }
+    //                 break;
+    //         }
 
-            updatePinDisplay();
-        }
-    });
+    //         updatePinDisplay();
+    //     }
+    // });
 
-    showPinOverlay();
-    updatePinDisplay();
+    // PIN screen commented out
+    // showPinOverlay();
+    // updatePinDisplay();
 
-    function initializeApp() {
-        // Move all your existing code here, starting from:
+    // PIN screen commented out - removed function wrapper
+    // function initializeApp() {
+        // Existing app code starts here
         const addButton = document.getElementById('addButton');
         const clearAllButton = document.getElementById('clearAllButton');
         const formContainer = document.getElementById('formContainer');
@@ -190,5 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         updateWaitlist();
-    }
+    // PIN screen commented out - removed closing brace
+    // }
 });
