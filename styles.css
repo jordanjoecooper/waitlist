@@ -309,6 +309,16 @@ select {
     }
 }
 
+/* Add these styles */
+#clearAllButton.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#clearAllButton.disabled:hover {
+    background-color: #cccccc;
+}
+
 /* Add these styles at the end of your existing CSS file */
 
 .pin-overlay {

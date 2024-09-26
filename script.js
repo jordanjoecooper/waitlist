@@ -113,6 +113,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             localStorage.setItem('waitlist', JSON.stringify(waitlistData));
             waitlist.scrollTop = waitlist.scrollHeight;
+
+            // Add this block to enable/disable the Clear All button
+            if (waitlistData.length > 0) {
+                clearAllButton.disabled = false;
+                clearAllButton.classList.remove('disabled');
+            } else {
+                clearAllButton.disabled = true;
+                clearAllButton.classList.add('disabled');
+            }
         };
 
         const updateWaitTimes = () => {
