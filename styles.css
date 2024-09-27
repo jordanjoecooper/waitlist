@@ -404,3 +404,49 @@ select {
         justify-self: center;
     }
 }
+
+/* Larger VIP checkbox */
+#vipToggle {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    margin-right: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+/* Add this near the other li styles */
+li.vip {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Adjust the remove button for VIP entries */
+li.vip .removeButton {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+li.vip .removeButton:hover {
+    background-color: #cccccc;
+}
+
+/* Adjust the VIP badge for better visibility on black background */
+li.vip .vip-badge {
+    background-color: #ffffff;
+    color: #000000;
+}

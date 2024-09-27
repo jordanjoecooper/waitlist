@@ -59,12 +59,23 @@
             <option value="7">7</option>
             <option value="8">8</option>
           </select>
+          <select id="locationInput">
+            <option value="" disabled selected>Select location</option>
+            <option value="Inside">Inside</option>
+            <option value="Outside">Outside</option>
+            <option value="Both">Both</option>
+          </select>
+          <!-- VIP toggle and location selection -->
+          <div class="form-row">
+            <label for="vipToggle">VIP:</label>
+            <input type="checkbox" id="vipToggle" />
+          </div>
           <button id="confirmButton">Add to list</button>
         </div>
         <ul id="waitlist"></ul>
         <div class="button-container">
-            <button id="clearAllButton">Clear all</button>
-          </div>
+          <button id="clearAllButton">Clear all</button>
+        </div>
       </div>
     </div>
     <div id="modal" class="modal hidden">

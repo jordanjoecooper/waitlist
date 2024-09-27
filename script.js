@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('modal');
         const confirmClear = document.getElementById('confirmClear');
         const cancelClear = document.getElementById('cancelClear');
+        const vipToggle = document.getElementById('vipToggle');
+        const locationInput = document.getElementById('locationInput');
 
         let waitlistData = JSON.parse(localStorage.getItem('waitlist')) || [];
 
@@ -97,10 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
             waitlist.innerHTML = '';
             waitlistData.forEach((entry, index) => {
                 const li = document.createElement('li');
+                if (entry.vip) {
+                    li.classList.add('vip');
+                }
                 const waitTime = Math.floor((Date.now() - entry.timestamp) / 60000);
                 li.innerHTML = `
-                    <span class="guest-name">${entry.name}</span>
+                    <span class="guest-name">${entry.name}${entry.vip ? '<span class="vip-badge">VIP</span>' : ''}</span>
                     <span class="guest-count">Guests: ${entry.guests}</span>
+                    <span class="location">Location: ${entry.location}</span>
                     <span class="wait-time">Waiting: ${waitTime} min${waitTime !== 1 ? 's' : ''}</span>
                     <div class="remove-button-container">
                         <button class="removeButton" data-index="${index}">Remove</button>
@@ -168,6 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
             clearErrors();
             const name = nameInput.value.trim();
             const guests = guestsInput.value;
+            const vip = vipToggle.checked;
+            const location = locationInput.value;
             let isValid = true;
 
             if (!name) {
@@ -180,12 +188,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 isValid = false;
             }
 
+            if (!location) {
+                showError(locationInput, 'Please select a location');
+                isValid = false;
+            }
+
             if (isValid) {
-                waitlistData.push({ name, guests, timestamp: Date.now() });
+                waitlistData.push({ name, guests, vip, location, timestamp: Date.now() });
                 updateWaitlist();
                 nameInput.value = '';
                 guestsInput.selectedIndex = 0;
-                nameInput.focus(); // Set focus back to the name input for the next entry
+                vipToggle.checked = false;
+                locationInput.selectedIndex = 0;
+                nameInput.focus();
             }
         });
 
