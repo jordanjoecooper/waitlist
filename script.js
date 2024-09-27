@@ -97,28 +97,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateWaitlist = () => {
     waitlist.innerHTML = "";
     waitlistData.forEach((entry, index) => {
-      const li = document.createElement("li");
-      if (entry.vip) {
-        li.classList.add("vip");
-      }
-      const waitTime = Math.floor((Date.now() - entry.timestamp) / 60000);
-      li.innerHTML = `
-                    <span class="guest-name">${
-                      entry.vip ? "<span>*</span>" : ""
-                    }${entry.name}</span>
-                    <span class="guest-count">${entry.guests}</span>
-                    <span class="location">${entry.location}</span>
-                    <span class="wait-time">${waitTime} min${
-        waitTime !== 1 ? "s" : ""
-      }</span>
-                    <div class="remove-button-container">
-                        <button class="removeButton" data-index="${index}">Remove</button>
-                    </div>
-                `;
-      waitlist.appendChild(li);
+        const tr = document.createElement("tr");
+        if (entry.vip) {
+            tr.classList.add("vip");
+        }
+        const waitTime = Math.floor((Date.now() - entry.timestamp) / 60000);
+        tr.innerHTML = `
+            <td data-label="Name">${entry.vip ? "<span>*</span>" : ""}${entry.name}</td>
+            <td data-label="Guests">${entry.guests}</td>
+            <td data-label="Location">${entry.location}</td>
+            <td data-label="Waiting">${waitTime} min${waitTime !== 1 ? "s" : ""}</td>
+            <td data-label="Action">
+                <button class="removeButton" data-index="${index}">Remove</button>
+            </td>
+        `;
+        waitlist.appendChild(tr);
     });
     localStorage.setItem("waitlist", JSON.stringify(waitlistData));
-    waitlist.scrollTop = waitlist.scrollHeight;
 
     // enable/disable the Clear All button
     if (waitlistData.length > 0) {
@@ -131,11 +126,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const updateWaitTimes = () => {
-    document.querySelectorAll(".wait-time").forEach((el, index) => {
-      const waitTime = Math.floor(
-        (Date.now() - waitlistData[index].timestamp) / 60000
-      );
-      el.textContent = `Waiting ${waitTime} min${waitTime !== 1 ? "s" : ""}`;
+    document.querySelectorAll("[data-label='Waiting']").forEach((el, index) => {
+        const waitTime = Math.floor((Date.now() - waitlistData[index].timestamp) / 60000);
+        el.textContent = `${waitTime} min${waitTime !== 1 ? "s" : ""}`;
     });
   };
 

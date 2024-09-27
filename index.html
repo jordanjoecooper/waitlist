@@ -73,14 +73,22 @@
           <button id="confirmButton">Add to list</button>
         </div>
         <!-- Add this new div for the list header -->
-        <div class="list-header">
-          <span>Name</span>
-          <span>Guests</span>
-          <span>Location</span>
-          <span>Waiting</span>
-          <span></span> <!-- Empty span for the remove button column -->
+        <div class="waitlist-container">
+            <table class="waitlist-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Guests</th>
+                        <th>Location</th>
+                        <th>Waiting</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="waitlist">
+                    <!-- Waitlist items will be dynamically inserted here -->
+                </tbody>
+            </table>
         </div>
-        <ul id="waitlist"></ul>
         <div class="button-container">
           <button id="clearAllButton">Clear all</button>
         </div>
