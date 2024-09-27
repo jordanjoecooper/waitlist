@@ -60,10 +60,10 @@
             <option value="8">8</option>
           </select>
           <select id="locationInput">
-            <option value="" disabled selected>Select location</option>
+            <option value="" disabled selected>Location</option>
             <option value="Inside">Inside</option>
             <option value="Outside">Outside</option>
-            <option value="Both">Both</option>
+            <option value="Either">Either</option>
           </select>
           <!-- VIP toggle and location selection -->
           <div class="form-row">
@@ -71,6 +71,14 @@
             <input type="checkbox" id="vipToggle" />
           </div>
           <button id="confirmButton">Add to list</button>
+        </div>
+        <!-- Add this new div for the list header -->
+        <div class="list-header">
+          <span>Name</span>
+          <span>Guests</span>
+          <span>Location</span>
+          <span>Waiting</span>
+          <span></span> <!-- Empty span for the remove button column -->
         </div>
         <ul id="waitlist"></ul>
         <div class="button-container">

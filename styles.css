@@ -155,7 +155,7 @@ li {
     padding: 15px;
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
     align-items: center;
     gap: 10px;
     max-width: 100%;
@@ -195,6 +195,7 @@ select {
 .remove-button-container {
     width: auto; /* Allow it to take only the space it needs */
     padding-top: 0; /* Remove top padding */
+    justify-self: end;
 }
 
 .error {
@@ -324,6 +325,157 @@ select {
 
 #cancelClear:hover {
     background-color: #ff0000;
+}
+
+.wait-time {
+    font-size: 14px;
+    color: #666666;
+    margin: 0; /* Remove top margin */
+    width: auto; /* Allow it to take only the space it needs */
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    button, #addButton, #clearAllButton {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    button, #addButton, #clearAllButton {
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+}
+
+/* Add these styles */
+#clearAllButton.disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#clearAllButton.disabled:hover {
+    background-color: #cccccc;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#formContainer {
+    width: 100%;
+    max-width: 405px; /* Increased from 400px to 405px */
+    margin: 0 auto 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#formContainer:not(.hidden) {
+    display: flex;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    li {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 5px;
+    }
+
+    .remove-button-container {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+}
+
+/* Larger VIP checkbox */
+#vipToggle {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.form-row label {
+    margin-right: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+/* Add this near the other li styles */
+li.vip {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Adjust the remove button for VIP entries */
+li.vip .removeButton {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+li.vip .removeButton:hover {
+    background-color: #cccccc;
+}
+
+/* Adjust the VIP badge for better visibility on black background */
+li.vip .vip-badge {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Add this near the other list-related styles */
+.list-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    font-weight: bold;
+    background-color: #212121;
+    color: #ffffff;
+    margin-bottom: 10px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.list-header span {
+    text-align: left;
+}
+
+/* Responsive adjustments for the header */
+@media (max-width: 600px) {
+    .list-header {
+        display: none; /* Hide the header on small screens */
+    }
 }
 
 .wait-time {
